@@ -8,7 +8,7 @@
 - 科目：自然科學
 - 學習時間：40 分鐘
 - 教材模式：引導模式
-- 目前版本：v1.0.6
+- 目前版本：v1.0.8
 - GitHub Pages：https://prayer168.github.io/changing-earth-interactive-learning/
 
 ## 學習目標

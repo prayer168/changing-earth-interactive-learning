@@ -188,7 +188,7 @@
           <label>速度 <input id="speedRange" type="range" min="0.6" max="2" step="0.2" value="1" /></label>
         </div>
         <div class="sim-layout">
-          <svg id="plateSim" class="plate-sim stage-0" viewBox="0 0 860 420" role="img" aria-label="板塊推擠、斷層鎖住、突然錯動與震波傳播 SVG 動畫">
+          <svg id="plateSim" class="plate-sim stage-0" viewBox="0 0 1400 420" role="img" aria-label="板塊推擠、斷層鎖住、突然錯動與震波傳播 SVG 動畫">
             <defs>
               <marker id="plateArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
                 <path d="M0 0 L12 6 L0 12Z" fill="#17544d" />
@@ -202,37 +202,37 @@
                 <stop offset="1" stop-color="#91aa72" />
               </linearGradient>
             </defs>
-            <rect width="860" height="420" fill="#d9effa" />
-            <path d="M0 180 C128 166 246 156 360 166 C472 178 584 164 700 174 C770 180 818 180 860 176 L860 420 L0 420Z" fill="#d6b06d" />
+            <rect width="1400" height="420" fill="#d9effa" />
+            <path d="M0 176 C210 162 392 156 586 168 C754 178 930 164 1138 176 C1250 184 1320 182 1400 174 L1400 420 L0 420Z" fill="#d6b06d" />
             <g class="plates">
-              <path id="leftPlate" d="M0 190 C120 174 236 166 374 172 L410 420 L0 420Z" fill="url(#crustLeft)" />
-              <path id="rightPlate" d="M442 170 C560 162 690 174 860 182 L860 420 L404 420Z" fill="url(#crustRight)" />
-              <path class="plate-edge left-edge" d="M374 172 L410 420" fill="none" stroke="#5f7250" stroke-width="5" />
-              <path class="plate-edge right-edge" d="M442 170 L404 420" fill="none" stroke="#56694d" stroke-width="5" />
+              <path id="leftPlate" d="M0 190 C218 174 420 166 650 172 L698 420 L0 420Z" fill="url(#crustLeft)" />
+              <path id="rightPlate" d="M746 170 C952 162 1170 176 1400 182 L1400 420 L688 420Z" fill="url(#crustRight)" />
+              <path class="plate-edge left-edge" d="M650 172 L698 420" fill="none" stroke="#5f7250" stroke-width="5" />
+              <path class="plate-edge right-edge" d="M746 170 L688 420" fill="none" stroke="#56694d" stroke-width="5" />
             </g>
-            <path class="fault-plane" d="M425 160 L390 278 L420 420" fill="none" stroke="#3f3630" stroke-width="9" stroke-linecap="round" />
-            <path class="fault-shadow" d="M405 162 L372 278 L402 420" fill="none" stroke="rgba(63,54,48,0.18)" stroke-width="18" stroke-linecap="round" />
-            <path class="stress-zone" d="M346 182 C390 208 406 246 390 298 C430 272 456 222 502 178 C462 172 400 172 346 182Z" fill="rgba(185,75,67,0.18)" stroke="#b94b43" stroke-width="3" />
+            <path class="fault-plane" d="M715 158 L662 280 L708 420" fill="none" stroke="#3f3630" stroke-width="9" stroke-linecap="round" />
+            <path class="fault-shadow" d="M690 162 L638 282 L682 420" fill="none" stroke="rgba(63,54,48,0.18)" stroke-width="18" stroke-linecap="round" />
+            <path class="stress-zone" d="M592 184 C662 202 690 244 668 304 C735 278 775 224 842 180 C768 170 670 172 592 184Z" fill="rgba(185,75,67,0.18)" stroke="#b94b43" stroke-width="3" />
             <g class="locked-blocks" aria-hidden="true">
-              <circle cx="410" cy="232" r="13" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
-              <circle cx="438" cy="224" r="13" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
+              <path d="M676 224 L712 200 L730 236Z" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
+              <path d="M738 222 L700 250 L686 212Z" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
             </g>
             <g class="push-arrows" aria-hidden="true">
-              <path d="M150 106 H334" marker-end="url(#plateArrow)" />
-              <path d="M710 106 H526" marker-end="url(#plateArrow)" />
+              <path d="M250 106 H592" marker-end="url(#plateArrow)" />
+              <path d="M1150 106 H812" marker-end="url(#plateArrow)" />
             </g>
             <g class="lock-indicator" aria-hidden="true">
-              <path d="M424 118 V160" marker-end="url(#plateArrow)" />
-              <path d="M394 252 L436 206" stroke="#7e5a1d" stroke-width="5" stroke-linecap="round" />
+              <path d="M715 118 V160" marker-end="url(#plateArrow)" />
+              <path d="M672 252 L734 206" stroke="#7e5a1d" stroke-width="5" stroke-linecap="round" />
             </g>
             <g class="slip-indicator" aria-hidden="true">
-              <path d="M386 272 l-24 42" marker-end="url(#plateArrow)" />
-              <path d="M434 214 l42 -26" marker-end="url(#plateArrow)" />
+              <path d="M660 276 l-40 44" marker-end="url(#plateArrow)" />
+              <path d="M730 214 l62 -28" marker-end="url(#plateArrow)" />
             </g>
             <g class="waves" aria-hidden="true">
-              <circle class="wave one" cx="420" cy="238" r="10" />
-              <circle class="wave two" cx="420" cy="238" r="10" />
-              <circle class="wave three" cx="420" cy="238" r="10" />
+              <circle class="wave one" cx="708" cy="238" r="10" />
+              <circle class="wave two" cx="708" cy="238" r="10" />
+              <circle class="wave three" cx="708" cy="238" r="10" />
             </g>
           </svg>
           <ol class="sim-steps" aria-label="動畫步驟說明">
@@ -242,7 +242,7 @@
             <li data-step="3"><strong>4 震波傳播</strong><span>震波從錯動位置向外擴散，地表開始搖晃。</span></li>
           </ol>
         </div>
-        <p class="feedback" id="simFeedback">按下播放，觀察地表震動波向外傳開。</p>
+        <p class="feedback sim-feedback" id="simFeedback">按下播放，觀察地表震動波向外傳開。</p>
       </section>
 
       <section class="panel" data-panel="life" tabindex="0">

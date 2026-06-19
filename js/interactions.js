@@ -189,7 +189,7 @@ function setupSimulation() {
   const steps = [...document.querySelectorAll(".sim-steps li")];
   const messages = [
     "現在只看推擠：左右板塊互相靠近，岩層開始受力。",
-    "現在只看累積：斷層被卡住，紅色區域表示能量集中。",
+    "現在只看鎖住累積：楔形卡住斷層，紅色區域表示能量集中。",
     "現在只看錯動：兩側岩層沿斷層突然位移。",
     "現在只看震波：能量從錯動位置向外傳開。"
   ];
