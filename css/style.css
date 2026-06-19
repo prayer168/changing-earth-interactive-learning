@@ -211,7 +211,7 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 }
 .plate-sim {
   display: block;
-  height: 330px;
+  height: 360px;
   width: 100%;
   margin: 0;
   overflow: hidden;
@@ -220,29 +220,60 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 }
 .wave {
   fill: none;
-  border: 4px solid rgba(185, 75, 67, 0.65);
   stroke: rgba(185, 75, 67, 0.75);
   stroke-width: 5;
   opacity: 0;
-  transform-origin: 382px 218px;
+  transform-origin: 420px 238px;
 }
 .push-arrows path,
-.lock-label path,
-.slip-label path {
+.lock-indicator path,
+.slip-indicator path {
   fill: none;
   stroke: var(--accent-dark);
   stroke-width: 5;
   stroke-linecap: round;
 }
-.stress-zone { opacity: 0.35; }
-.fault-plane { transform-origin: 382px 250px; }
-.plate-sim.playing #leftPlate { animation: leftPlatePush 3s ease-in-out infinite; }
-.plate-sim.playing #rightPlate { animation: rightPlatePush 3s ease-in-out infinite; }
-.plate-sim.playing .fault-plane { animation: faultSlip 3s ease-in-out infinite; }
-.plate-sim.playing .stress-zone { animation: stressBuild 3s ease-in-out infinite; }
-.plate-sim.playing .wave { animation: seismic 2.4s ease-out infinite; }
-.plate-sim.playing .two { animation-delay: 0.65s; }
-.plate-sim.playing .three { animation-delay: 1.3s; }
+.fault-shadow { pointer-events: none; }
+.fault-plane { transform-origin: 420px 250px; }
+.push-arrows,
+.lock-indicator,
+.slip-indicator,
+.waves,
+.stress-zone,
+.locked-blocks {
+  opacity: 0.18;
+  transition: opacity 0.35s ease;
+}
+.plate-sim.stage-0 .push-arrows,
+.plate-sim.stage-1 .lock-indicator,
+.plate-sim.stage-1 .stress-zone,
+.plate-sim.stage-1 .locked-blocks,
+.plate-sim.stage-2 .slip-indicator,
+.plate-sim.stage-3 .waves {
+  opacity: 1;
+}
+.plate-sim.stage-0.playing .push-arrows {
+  animation: pushPulse 1.2s ease-in-out infinite;
+}
+.plate-sim.stage-1.playing .stress-zone {
+  animation: stressBuild 1.2s ease-in-out infinite;
+}
+.plate-sim.stage-2.playing #leftPlate,
+.plate-sim.stage-2.playing .left-edge {
+  animation: leftPlateSlip 1.2s ease-in-out infinite;
+}
+.plate-sim.stage-2.playing #rightPlate,
+.plate-sim.stage-2.playing .right-edge {
+  animation: rightPlateSlip 1.2s ease-in-out infinite;
+}
+.plate-sim.stage-2.playing .fault-plane {
+  animation: faultSlip 1.2s ease-in-out infinite;
+}
+.plate-sim.stage-3.playing .wave {
+  animation: seismic 1.8s ease-out infinite;
+}
+.plate-sim.stage-3.playing .two { animation-delay: 0.45s; }
+.plate-sim.stage-3.playing .three { animation-delay: 0.9s; }
 .sim-steps {
   display: grid;
   gap: 0.65rem;

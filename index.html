@@ -188,41 +188,58 @@
           <label>速度 <input id="speedRange" type="range" min="0.6" max="2" step="0.2" value="1" /></label>
         </div>
         <div class="sim-layout">
-          <svg id="plateSim" class="plate-sim" viewBox="0 0 760 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="板塊推擠、斷層錯動與震波傳播 SVG 動畫">
+          <svg id="plateSim" class="plate-sim stage-0" viewBox="0 0 860 420" role="img" aria-label="板塊推擠、斷層鎖住、突然錯動與震波傳播 SVG 動畫">
             <defs>
               <marker id="plateArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
                 <path d="M0 0 L12 6 L0 12Z" fill="#17544d" />
               </marker>
+              <linearGradient id="crustLeft" x1="0" x2="1">
+                <stop offset="0" stop-color="#9ab37b" />
+                <stop offset="1" stop-color="#7f9d65" />
+              </linearGradient>
+              <linearGradient id="crustRight" x1="0" x2="1">
+                <stop offset="0" stop-color="#789260" />
+                <stop offset="1" stop-color="#91aa72" />
+              </linearGradient>
             </defs>
-            <rect width="760" height="360" fill="#d9effa" />
-            <rect y="160" width="760" height="200" fill="#d6b06d" />
+            <rect width="860" height="420" fill="#d9effa" />
+            <path d="M0 180 C128 166 246 156 360 166 C472 178 584 164 700 174 C770 180 818 180 860 176 L860 420 L0 420Z" fill="#d6b06d" />
             <g class="plates">
-              <path id="leftPlate" d="M0 188 L370 166 L330 360 L0 360Z" fill="#8aa36d" />
-              <path id="rightPlate" d="M390 166 L760 188 L760 360 L430 360Z" fill="#7e9b67" />
+              <path id="leftPlate" d="M0 190 C120 174 236 166 374 172 L410 420 L0 420Z" fill="url(#crustLeft)" />
+              <path id="rightPlate" d="M442 170 C560 162 690 174 860 182 L860 420 L404 420Z" fill="url(#crustRight)" />
+              <path class="plate-edge left-edge" d="M374 172 L410 420" fill="none" stroke="#5f7250" stroke-width="5" />
+              <path class="plate-edge right-edge" d="M442 170 L404 420" fill="none" stroke="#56694d" stroke-width="5" />
             </g>
-            <path class="fault-plane" d="M380 154 L360 230 L390 360" fill="none" stroke="#3f3630" stroke-width="8" />
-            <path class="stress-zone" d="M340 176 C365 204 370 244 360 286 C388 258 402 220 420 176" fill="rgba(185,75,67,0.16)" stroke="#b94b43" stroke-width="3" />
+            <path class="fault-plane" d="M425 160 L390 278 L420 420" fill="none" stroke="#3f3630" stroke-width="9" stroke-linecap="round" />
+            <path class="fault-shadow" d="M405 162 L372 278 L402 420" fill="none" stroke="rgba(63,54,48,0.18)" stroke-width="18" stroke-linecap="round" />
+            <path class="stress-zone" d="M346 182 C390 208 406 246 390 298 C430 272 456 222 502 178 C462 172 400 172 346 182Z" fill="rgba(185,75,67,0.18)" stroke="#b94b43" stroke-width="3" />
+            <g class="locked-blocks" aria-hidden="true">
+              <circle cx="410" cy="232" r="13" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
+              <circle cx="438" cy="224" r="13" fill="#f2a93b" stroke="#7e5a1d" stroke-width="4" />
+            </g>
             <g class="push-arrows" aria-hidden="true">
-              <path d="M125 108 H318" marker-end="url(#plateArrow)" />
-              <path d="M635 108 H442" marker-end="url(#plateArrow)" />
+              <path d="M150 106 H334" marker-end="url(#plateArrow)" />
+              <path d="M710 106 H526" marker-end="url(#plateArrow)" />
             </g>
-            <g class="lock-label" aria-hidden="true">
-              <path d="M370 126 V164" marker-end="url(#plateArrow)" />
+            <g class="lock-indicator" aria-hidden="true">
+              <path d="M424 118 V160" marker-end="url(#plateArrow)" />
+              <path d="M394 252 L436 206" stroke="#7e5a1d" stroke-width="5" stroke-linecap="round" />
             </g>
-            <g class="slip-label" aria-hidden="true">
-              <path d="M398 234 l34 -24" marker-end="url(#plateArrow)" />
+            <g class="slip-indicator" aria-hidden="true">
+              <path d="M386 272 l-24 42" marker-end="url(#plateArrow)" />
+              <path d="M434 214 l42 -26" marker-end="url(#plateArrow)" />
             </g>
             <g class="waves" aria-hidden="true">
-              <circle class="wave one" cx="382" cy="218" r="8" />
-              <circle class="wave two" cx="382" cy="218" r="8" />
-              <circle class="wave three" cx="382" cy="218" r="8" />
+              <circle class="wave one" cx="420" cy="238" r="10" />
+              <circle class="wave two" cx="420" cy="238" r="10" />
+              <circle class="wave three" cx="420" cy="238" r="10" />
             </g>
           </svg>
           <ol class="sim-steps" aria-label="動畫步驟說明">
-            <li data-step="0"><strong>1 推擠</strong><span>兩側板塊互相推擠，岩層開始受力。</span></li>
-            <li data-step="1"><strong>2 累積</strong><span>斷層面暫時卡住，能量在附近累積。</span></li>
-            <li data-step="2"><strong>3 錯動</strong><span>岩層承受不住時突然錯動，釋放能量。</span></li>
-            <li data-step="3"><strong>4 傳播</strong><span>能量以震波向外傳開，地表感受到搖晃。</span></li>
+            <li data-step="0"><strong>1 推擠</strong><span>只觀察水平箭頭：兩側岩層互相擠壓。</span></li>
+            <li data-step="1"><strong>2 鎖住累積</strong><span>斷層附近被卡住，紅色區域代表能量累積。</span></li>
+            <li data-step="2"><strong>3 突然錯動</strong><span>兩側岩層沿斷層反向滑動，能量瞬間釋放。</span></li>
+            <li data-step="3"><strong>4 震波傳播</strong><span>震波從錯動位置向外擴散，地表開始搖晃。</span></li>
           </ol>
         </div>
         <p class="feedback" id="simFeedback">按下播放，觀察地表震動波向外傳開。</p>

@@ -187,17 +187,26 @@ function setupSimulation() {
   const feedback = document.querySelector("#simFeedback");
   const speed = document.querySelector("#speedRange");
   const steps = [...document.querySelectorAll(".sim-steps li")];
+  const messages = [
+    "現在只看推擠：左右板塊互相靠近，岩層開始受力。",
+    "現在只看累積：斷層被卡住，紅色區域表示能量集中。",
+    "現在只看錯動：兩側岩層沿斷層突然位移。",
+    "現在只看震波：能量從錯動位置向外傳開。"
+  ];
   let stepTimer = null;
 
   function setStep(index) {
     steps.forEach((step, stepIndex) => step.classList.toggle("active", stepIndex === index));
+    sim.classList.remove("stage-0", "stage-1", "stage-2", "stage-3");
+    sim.classList.add(`stage-${index}`);
+    feedback.textContent = messages[index];
   }
 
   function runSteps() {
     clearInterval(stepTimer);
     let index = 0;
     setStep(index);
-    const interval = 750 / Number(speed.value);
+    const interval = 1400 / Number(speed.value);
     stepTimer = setInterval(() => {
       index = (index + 1) % steps.length;
       setStep(index);
@@ -208,16 +217,15 @@ function setupSimulation() {
     sim.classList.add("playing");
     sim.style.setProperty("--speed", speed.value);
     sim.querySelectorAll(".wave").forEach((wave) => {
-      wave.style.animationDuration = `${2.4 / Number(speed.value)}s`;
+      wave.style.animationDuration = `${1.8 / Number(speed.value)}s`;
     });
     runSteps();
-    feedback.textContent = "板塊互相推擠，能量釋放後震波向外傳開。";
   };
   document.querySelector("[data-play]").addEventListener("click", play);
   document.querySelector("[data-pause]").addEventListener("click", () => {
     sim.classList.remove("playing");
     clearInterval(stepTimer);
-    feedback.textContent = "已暫停。";
+    feedback.textContent = "已暫停，可按播放接續觀察。";
   });
   document.querySelector("[data-replay]").addEventListener("click", () => {
     sim.classList.remove("playing");
