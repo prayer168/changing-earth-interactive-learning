@@ -79,48 +79,94 @@
         <div class="lab-layout">
           <section class="toolbox">
             <h3>地表作用觀察</h3>
-            <p>選一種作用，觀察地形怎麼改變。</p>
+            <p>選一種作用，先看左側任務，再到圖中找出「位置、方向、證據」。</p>
             <div class="segmented" role="group" aria-label="選擇地表作用">
               <button data-process="weathering">風化</button>
               <button data-process="erosion">侵蝕</button>
               <button data-process="deposition">堆積</button>
             </div>
             <p id="processFeedback" class="feedback">請選擇一種作用。</p>
+            <ul id="evidenceList" class="evidence-list">
+              <li>觀察地形分成上游、中游、下游。</li>
+              <li>按下按鈕後，找出圖中被標示的作用位置。</li>
+              <li>比較材料是「留在原地」還是「被水流帶走」。</li>
+            </ul>
             <button class="secondary" data-reset-process>重設</button>
           </section>
-          <svg id="processSvg" viewBox="0 0 540 260" role="img" aria-label="地表作用互動示意圖">
+          <svg id="processSvg" viewBox="0 0 900 420" role="img" aria-label="風化、侵蝕搬運與堆積的地表作用互動示意圖">
             <defs>
               <marker id="smallArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
                 <path d="M0 0 L9 4.5 L0 9Z" fill="#17544d" />
               </marker>
+              <marker id="sandArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <path d="M0 0 L9 4.5 L0 9Z" fill="#9a714f" />
+              </marker>
             </defs>
-            <rect width="540" height="260" fill="#ecf7fb" />
-            <path id="hillShape" d="M0 205 C105 168 152 92 242 122 C318 146 354 196 540 176 L540 260 L0 260Z" fill="#8aa36d" />
-            <path id="streamShape" d="M260 82 C245 130 285 158 262 210 C254 229 246 244 238 260" fill="none" stroke="#327eb8" stroke-width="16" stroke-linecap="round" />
+            <rect width="900" height="420" fill="#ecf7fb" />
+            <rect y="305" width="900" height="115" fill="#d7b77b" />
+            <path id="hillShape" d="M0 318 C95 284 160 220 245 166 C315 122 395 92 485 118 C594 150 638 226 728 254 C790 274 836 272 900 258 L900 420 L0 420Z" fill="#8aa36d" />
+            <path class="bedrock" d="M0 338 C118 310 208 250 300 198 C380 154 456 144 540 176 C640 214 702 286 900 282" fill="none" stroke="#6f7257" stroke-width="8" opacity="0.65" />
+            <path class="bedrock" d="M0 368 C118 340 214 284 320 232 C402 192 478 186 560 214 C648 244 720 320 900 318" fill="none" stroke="#6f7257" stroke-width="6" opacity="0.45" />
+            <path id="streamShape" d="M420 106 C388 150 392 182 438 214 C486 248 468 286 402 310 C326 338 244 350 160 380" fill="none" stroke="#2f81bd" stroke-width="24" stroke-linecap="round" />
+            <path class="river-highlight" d="M420 106 C388 150 392 182 438 214 C486 248 468 286 402 310 C326 338 244 350 160 380" fill="none" stroke="#8fd0f2" stroke-width="8" stroke-linecap="round" opacity="0.85" />
             <g class="process-layer" data-layer="base">
-              <text x="28" y="232">坡面</text>
-              <text x="286" y="84">溪流</text>
-              <path d="M292 96 C310 128 302 164 284 190" marker-end="url(#smallArrow)" fill="none" stroke="#17544d" stroke-width="3" />
+              <text x="64" y="308">下游平原</text>
+              <text x="292" y="146">上游坡面</text>
+              <text x="560" y="246">中游河岸</text>
+              <text x="710" y="314">地層</text>
+              <path d="M430 88 C400 146 406 184 446 214 C506 260 448 312 344 340 C270 360 218 364 162 386" marker-end="url(#smallArrow)" fill="none" stroke="#17544d" stroke-width="4" stroke-dasharray="8 8" />
+              <text x="492" y="150">水流方向：上游往下游</text>
             </g>
             <g class="process-layer hidden" data-layer="weathering">
-              <circle cx="122" cy="142" r="19" fill="#f2a93b" />
-              <path d="M142 142 h38" stroke="#f2a93b" stroke-width="4" marker-end="url(#smallArrow)" />
-              <path d="M190 120 l12 26 l16 -30 l14 34" fill="none" stroke="#493f37" stroke-width="4" />
-              <path d="M216 152 c-4 22 -18 30 -34 44" fill="none" stroke="#2e7d71" stroke-width="4" />
-              <text x="24" y="42">風化：陽光、雨水、植物根讓岩石在原地裂開</text>
+              <rect x="22" y="22" width="398" height="58" rx="8" fill="#fff9e8" stroke="#f2a93b" />
+              <text x="42" y="58">風化證據：裂縫變大、岩塊鬆動，但還在原地附近</text>
+              <circle cx="250" cy="112" r="20" fill="#f2a93b" />
+              <path d="M274 116 h58" stroke="#f2a93b" stroke-width="5" marker-end="url(#smallArrow)" />
+              <path d="M304 152 l16 34 l18 -42 l18 48 l22 -40" fill="none" stroke="#493f37" stroke-width="5" />
+              <path d="M358 190 c-12 28 -34 44 -62 62" fill="none" stroke="#2e7d71" stroke-width="6" />
+              <circle cx="300" cy="254" r="10" fill="#6f7257" />
+              <circle cx="332" cy="268" r="13" fill="#6f7257" />
+              <circle cx="370" cy="282" r="8" fill="#6f7257" />
+              <path d="M312 238 C306 210 306 184 318 158" fill="none" stroke="#17544d" stroke-width="4" marker-end="url(#smallArrow)" />
+              <text x="382" y="188">植物根撐開裂縫</text>
+              <text x="372" y="288">碎岩留在坡腳</text>
             </g>
             <g class="process-layer hidden" data-layer="erosion">
-              <path d="M272 110 C300 148 310 180 344 206" marker-end="url(#smallArrow)" fill="none" stroke="#17544d" stroke-width="4" />
-              <path d="M310 172 c38 6 62 14 94 30" fill="none" stroke="#9a714f" stroke-width="7" stroke-linecap="round" stroke-dasharray="8 10" />
-              <text x="24" y="42">侵蝕與搬運：水流切割坡面，帶走泥沙</text>
+              <rect x="22" y="22" width="424" height="58" rx="8" fill="#eef8ff" stroke="#2f81bd" />
+              <text x="42" y="58">侵蝕搬運證據：凹岸被切深，泥沙沿水流往下游移動</text>
+              <path d="M460 208 C506 238 508 278 456 308" fill="none" stroke="#b94b43" stroke-width="8" stroke-linecap="round" />
+              <text x="548" y="220">凹岸沖刷</text>
+              <path d="M488 238 C462 226 446 218 420 200" fill="none" stroke="#b94b43" stroke-width="4" marker-end="url(#smallArrow)" />
+              <path d="M420 142 C394 184 418 214 468 238 C502 256 476 292 408 318 C334 348 252 358 174 382" fill="none" stroke="#9a714f" stroke-width="7" stroke-linecap="round" stroke-dasharray="9 12" marker-end="url(#sandArrow)" />
+              <circle cx="438" cy="220" r="7" fill="#9a714f" />
+              <circle cx="466" cy="250" r="6" fill="#9a714f" />
+              <circle cx="392" cy="326" r="7" fill="#9a714f" />
+              <circle cx="300" cy="352" r="5" fill="#9a714f" />
+              <text x="584" y="292">泥沙被搬走</text>
             </g>
             <g class="process-layer hidden" data-layer="deposition">
-              <path d="M220 220 C262 202 320 202 368 224 C324 244 266 246 220 220Z" fill="#d8b36d" />
-              <path d="M220 230 H370" stroke="#bf9254" stroke-width="4" />
-              <path d="M242 242 H350" stroke="#bf9254" stroke-width="4" />
-              <text x="24" y="42">堆積：水流變慢，泥沙在低處留下來</text>
+              <rect x="22" y="22" width="384" height="58" rx="8" fill="#fff7e7" stroke="#d8a94c" />
+              <text x="42" y="58">堆積證據：水流變慢，粗細不同的泥沙在低處留下</text>
+              <path d="M86 360 C150 326 234 326 308 354 C252 388 152 396 86 360Z" fill="#d8b36d" stroke="#bf9254" stroke-width="4" />
+              <path d="M118 366 H276" stroke="#bf9254" stroke-width="4" />
+              <path d="M150 380 H236" stroke="#bf9254" stroke-width="4" />
+              <circle cx="130" cy="352" r="7" fill="#9a714f" />
+              <circle cx="166" cy="344" r="5" fill="#9a714f" />
+              <circle cx="214" cy="348" r="4" fill="#9a714f" />
+              <path d="M292 340 C248 342 208 348 166 364" fill="none" stroke="#17544d" stroke-width="4" marker-end="url(#smallArrow)" />
+              <text x="276" y="330">流速變慢</text>
+              <text x="84" y="404">沙洲／沖積扇</text>
             </g>
             <g id="sediment"></g>
+            <g class="map-legend">
+              <rect x="668" y="24" width="202" height="104" rx="8" fill="rgba(255,255,255,0.86)" stroke="#d7e3dc" />
+              <circle cx="692" cy="52" r="7" fill="#6f7257" />
+              <text x="710" y="58">岩塊或碎石</text>
+              <path d="M682 82 h28" stroke="#9a714f" stroke-width="6" stroke-dasharray="8 6" />
+              <text x="720" y="88">被搬運泥沙</text>
+              <path d="M682 112 h28" stroke="#b94b43" stroke-width="6" />
+              <text x="720" y="118">侵蝕位置</text>
+            </g>
           </svg>
         </div>
         <section class="match-area">

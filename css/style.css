@@ -132,7 +132,7 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 .concept-card strong { color: var(--accent-dark); }
 .lab-layout {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: minmax(300px, 360px) minmax(560px, 1fr);
   gap: 1.2rem;
   align-items: stretch;
 }
@@ -147,14 +147,35 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
   color: var(--accent-dark);
   font-weight: 700;
 }
+.evidence-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+.evidence-list li {
+  color: var(--muted);
+}
 #processSvg {
   width: 100%;
-  min-height: 260px;
+  min-height: 430px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
 }
 .hidden { display: none; }
+.bedrock {
+  stroke-linecap: round;
+}
+.river-highlight {
+  stroke-dasharray: 22 18;
+  animation: flow 4s linear infinite;
+}
+.map-legend text {
+  fill: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+}
 .match-area { margin-top: 1rem; }
 .match-game {
   display: grid;
