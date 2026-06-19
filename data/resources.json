@@ -1,0 +1,66 @@
+[
+  {
+    "title": "教育部防災教育資訊網",
+    "url": "https://disaster.moe.edu.tw/WebMoeInfo/",
+    "type": "防災教材平台",
+    "grade": "國小高年級",
+    "description": "查找校園防災教材、活動與防災知識。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "中央氣象署地震測報中心",
+    "url": "https://scweb.cwa.gov.tw/",
+    "type": "地震資訊",
+    "grade": "國小高年級",
+    "description": "認識地震資訊、地震防護與近期地震活動。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "中央氣象署數位科普網",
+    "url": "https://edu.cwa.gov.tw/",
+    "type": "科普文章",
+    "grade": "國小高年級",
+    "description": "閱讀天氣、地震、海象與防災主題科普內容。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "國家災害防救科技中心 3D 災害潛勢地圖",
+    "url": "https://dmap.ncdr.nat.gov.tw/",
+    "type": "互動地圖",
+    "grade": "國小高年級至國中",
+    "description": "觀察淹水、坡地、斷層、土壤液化等災害潛勢。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "土石流及大規模崩塌防災資訊網",
+    "url": "https://246.ardswc.gov.tw/",
+    "type": "防災資訊",
+    "grade": "國小高年級至國中",
+    "description": "查詢坡地災害警戒、土石流知識與防災資訊。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "水保酷學堂",
+    "url": "https://learning.ardswc.gov.tw/",
+    "type": "教材資源",
+    "grade": "國小",
+    "description": "提供水土保持、土石流防災與環境教育學習資源。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "921 地震教育園區",
+    "url": "https://www.nmns.edu.tw/park_921/index.html",
+    "type": "博物館學習",
+    "grade": "國小高年級",
+    "description": "從真實地震遺跡認識斷層、地震與防災。",
+    "checkedAt": "2026-06-19"
+  },
+  {
+    "title": "USGS Earthquakes for Kids",
+    "url": "https://earthquake.usgs.gov/learn/kids/",
+    "type": "英文科普",
+    "grade": "國小高年級至國中",
+    "description": "用圖片、動畫與活動認識地震科學。",
+    "checkedAt": "2026-06-19"
+  }
+]

@@ -1,0 +1,40 @@
+@media (max-width: 880px) {
+  .hero-grid, .lab-layout {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    min-height: auto;
+  }
+  h1 {
+    max-width: 12ch;
+  }
+  .mission-grid, .concepts, .app-grid {
+    grid-template-columns: 1fr;
+  }
+  .match-game {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    max-width: 100%;
+  }
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .panel {
+    padding: 1.25rem;
+  }
+  .sim-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .progress-wrap {
+    grid-template-columns: 1fr;
+  }
+  footer {
+    justify-content: space-between;
+  }
+}
