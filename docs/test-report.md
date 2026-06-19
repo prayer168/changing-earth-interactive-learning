@@ -28,8 +28,10 @@
 - 未加入本機絕對路徑或敏感金鑰：通過
 - `npm audit --omit=optional`：通過，0 個漏洞
 - `npm run build`：通過，Vite 成功輸出 `dist/`
+- GitHub Pages 建置狀態：通過，狀態為 `built`
+- 線上教材網址檢查：通過，HTTP 200
 
 ## 待追蹤
 
-- GitHub Pages 已啟用：https://prayer168.github.io/changing-earth-interactive-learning/
+- GitHub Pages 已啟用並完成建置：https://prayer168.github.io/changing-earth-interactive-learning/
 - 外部連結可連線性需依學校網路環境再次確認。
