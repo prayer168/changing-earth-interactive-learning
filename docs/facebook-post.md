@@ -14,6 +14,6 @@
 
 適合課堂導入、平板分組操作，也能作為學生回家複習的小任務。
 
-教材網址：尚未部署
+教材網址：https://prayer168.github.io/changing-earth-interactive-learning/
 
 #自然科學 #國小自然 #防災教育 #地表變化 #互動教材 #數位學習

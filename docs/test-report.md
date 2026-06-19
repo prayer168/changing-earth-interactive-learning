@@ -31,5 +31,5 @@
 
 ## 待追蹤
 
-- GitHub Pages 尚未部署。
+- GitHub Pages 已啟用：https://prayer168.github.io/changing-earth-interactive-learning/
 - 外部連結可連線性需依學校網路環境再次確認。

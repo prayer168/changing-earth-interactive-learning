@@ -8,8 +8,8 @@
 - 科目：自然科學
 - 學習時間：40 分鐘
 - 教材模式：引導模式
-- 目前版本：v0.4.0
-- GitHub Pages：尚未部署
+- 目前版本：v1.0.0
+- GitHub Pages：https://prayer168.github.io/changing-earth-interactive-learning/
 
 ## 學習目標
 
@@ -69,6 +69,10 @@ HTML5、CSS3、SVG、原生 JavaScript、JSON、Vite。
 ## 課綱對應
 
 核心素養、議題融入與評量說明已整理於 `data/curriculum.json`。正式課綱代碼需由教師依最新課綱手冊確認。
+
+## 線上教材
+
+https://prayer168.github.io/changing-earth-interactive-learning/
 
 ## 授權與引用
 
