@@ -18,11 +18,52 @@ function renderConcepts(concepts) {
   const root = document.querySelector("#concepts");
   root.innerHTML = concepts.map((item) => `
     <article class="concept-card">
+      ${conceptVisual(item.visual)}
       <h3>${item.title}</h3>
       <p><strong>${item.keyword}</strong></p>
       <p>${item.text}</p>
     </article>
   `).join("");
+}
+
+function conceptVisual(type) {
+  const visuals = {
+    landforms: `
+      <svg class="concept-visual landform-visual" viewBox="0 0 360 150" role="img" aria-label="山地、河流、平原與海岸地形小動畫">
+        <rect width="360" height="150" fill="#dff4fb" />
+        <path d="M0 92 L74 34 L130 84 L186 42 L254 102 L360 76 L360 150 L0 150Z" fill="#86a26d" />
+        <path d="M0 126 C56 114 100 128 154 116 C216 102 268 124 360 104 L360 150 L0 150Z" fill="#d8b36d" />
+        <path class="water-flow" d="M184 52 C174 84 204 92 194 118 C188 132 168 140 150 150" fill="none" stroke="#2f81bd" stroke-width="14" stroke-linecap="round" />
+        <circle class="place-dot a" cx="76" cy="86" r="5" />
+        <circle class="place-dot b" cx="216" cy="114" r="5" />
+        <circle class="place-dot c" cx="292" cy="106" r="5" />
+      </svg>`,
+    surfaceChange: `
+      <svg class="concept-visual surface-change-visual" viewBox="0 0 360 150" role="img" aria-label="風化侵蝕搬運堆積流程小動畫">
+        <rect width="360" height="150" fill="#eef7fb" />
+        <path d="M0 112 C70 92 102 42 166 70 C228 96 274 118 360 96 L360 150 L0 150Z" fill="#8fa874" />
+        <path class="crack-line" d="M104 66 l10 22 l14 -28 l14 34" fill="none" stroke="#493f37" stroke-width="4" />
+        <path class="water-flow" d="M170 62 C160 92 198 98 190 126 C184 140 164 144 146 150" fill="none" stroke="#2f81bd" stroke-width="13" stroke-linecap="round" />
+        <path class="transport-line" d="M190 104 C224 112 244 122 274 130" fill="none" stroke="#9a714f" stroke-width="6" stroke-dasharray="8 8" />
+        <path class="sand-body" d="M246 130 C276 112 316 116 342 132 C308 146 274 146 246 130Z" fill="#d8b36d" />
+        <circle class="sand-dot a" cx="116" cy="100" r="5" />
+        <circle class="sand-dot b" cx="214" cy="112" r="5" />
+        <circle class="sand-dot c" cx="292" cy="130" r="4" />
+      </svg>`,
+    hazardRisk: `
+      <svg class="concept-visual hazard-visual" viewBox="0 0 360 150" role="img" aria-label="地震山崩土石流與淹水風險小動畫">
+        <rect width="360" height="150" fill="#eef7fb" />
+        <path d="M0 140 L116 40 L222 150 L0 150Z" fill="#8fa874" />
+        <path class="debris-channel" d="M118 56 C136 82 158 102 190 130" fill="none" stroke="#8b6b45" stroke-width="14" stroke-linecap="round" />
+        <path class="shake-mark left" d="M236 48 l12 -16 l8 20 l12 -16" />
+        <path class="flood-line" d="M220 124 C252 108 300 128 360 110" fill="none" stroke="#2f81bd" stroke-width="14" stroke-linecap="round" />
+        <rect x="258" y="96" width="42" height="30" fill="#d6b06d" stroke="#8b6b45" />
+        <circle class="debris one" cx="126" cy="62" r="5" />
+        <circle class="debris two" cx="152" cy="96" r="6" />
+        <circle class="debris three" cx="184" cy="126" r="5" />
+      </svg>`
+  };
+  return visuals[type] || "";
 }
 
 function renderApplications(applications) {
