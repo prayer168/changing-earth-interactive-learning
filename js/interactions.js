@@ -164,7 +164,7 @@ function setupMatch() {
       scene.addEventListener("dragstart", (event) => event.dataTransfer.setData("text/plain", item.id));
       scenes.append(scene);
     });
-    ["地震", "土石流", "山崩"].forEach((answer) => {
+    ["土石流", "山崩", "地震"].forEach((answer) => {
       const target = document.createElement("button");
       target.className = "drop-target";
       target.textContent = answer;
