@@ -349,8 +349,9 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
   gap: 0.35rem;
 }
 .app-visual {
+  display: block;
   width: 100%;
-  aspect-ratio: 12 / 5;
+  aspect-ratio: 2 / 1;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
@@ -393,6 +394,9 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 .fall-rock.two {
   animation: rockDrop 2.5s ease-in-out 0.35s infinite;
 }
+.fall-rock.three {
+  animation: rockDrop 2.5s ease-in-out 0.7s infinite;
+}
 .rain {
   stroke: #2f81bd;
   stroke-width: 5;
@@ -401,6 +405,7 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 }
 .rain-b { animation-delay: 0.25s; }
 .rain-c { animation-delay: 0.5s; }
+.rain-d { animation-delay: 0.75s; }
 .desk {
   fill: #8b6b45;
 }
