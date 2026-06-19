@@ -42,6 +42,8 @@
 - `npm run build`：通過，Vite 成功輸出 `dist/`
 - GitHub Pages 建置狀態：通過，狀態為 `built`
 - 線上教材網址檢查：通過，HTTP 200
+- 收工檢查：通過，已完成建置、安全掃描、敏感字串檢查、瀏覽器互動抽測、測驗抽測與 RWD 抽測。
+- Favicon 路徑：通過，已使用內嵌 SVG favicon，避免 `/favicon.ico` 404。
 
 ## 待追蹤
 
