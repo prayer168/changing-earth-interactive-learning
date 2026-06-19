@@ -2,6 +2,9 @@
   .tab-intro, .lab-layout {
     grid-template-columns: 1fr;
   }
+  .sim-layout {
+    grid-template-columns: 1fr;
+  }
   .site-header {
     position: static;
   }

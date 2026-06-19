@@ -186,21 +186,45 @@ function setupSimulation() {
   const sim = document.querySelector(".plate-sim");
   const feedback = document.querySelector("#simFeedback");
   const speed = document.querySelector("#speedRange");
+  const steps = [...document.querySelectorAll(".sim-steps li")];
+  let stepTimer = null;
+
+  function setStep(index) {
+    steps.forEach((step, stepIndex) => step.classList.toggle("active", stepIndex === index));
+  }
+
+  function runSteps() {
+    clearInterval(stepTimer);
+    let index = 0;
+    setStep(index);
+    const interval = 750 / Number(speed.value);
+    stepTimer = setInterval(() => {
+      index = (index + 1) % steps.length;
+      setStep(index);
+    }, interval);
+  }
+
   const play = () => {
     sim.classList.add("playing");
     sim.style.setProperty("--speed", speed.value);
     sim.querySelectorAll(".wave").forEach((wave) => {
       wave.style.animationDuration = `${2.4 / Number(speed.value)}s`;
     });
+    runSteps();
     feedback.textContent = "板塊互相推擠，能量釋放後震波向外傳開。";
   };
   document.querySelector("[data-play]").addEventListener("click", play);
   document.querySelector("[data-pause]").addEventListener("click", () => {
     sim.classList.remove("playing");
+    clearInterval(stepTimer);
     feedback.textContent = "已暫停。";
   });
   document.querySelector("[data-replay]").addEventListener("click", () => {
     sim.classList.remove("playing");
+    clearInterval(stepTimer);
+    setStep(0);
     requestAnimationFrame(play);
   });
+
+  setStep(0);
 }
