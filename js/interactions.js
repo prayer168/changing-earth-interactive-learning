@@ -137,9 +137,16 @@ function setupMatch() {
   const root = document.querySelector("#matchGame");
   const feedback = document.querySelector("#matchFeedback");
   let selected = null;
+  const connections = new Map();
 
   function render() {
-    root.innerHTML = `<div class="match-column" id="scenes"></div><div class="match-column" id="targets"></div>`;
+    selected = null;
+    connections.clear();
+    root.innerHTML = `
+      <svg class="match-lines" aria-hidden="true"></svg>
+      <div class="match-column" id="scenes"></div>
+      <div class="match-column" id="targets"></div>
+    `;
     const scenes = root.querySelector("#scenes");
     const targets = root.querySelector("#targets");
     matches.forEach((item) => {
@@ -150,7 +157,9 @@ function setupMatch() {
       scene.dataset.id = item.id;
       scene.addEventListener("click", () => {
         selected = item.id;
-        root.querySelectorAll(".match-item").forEach((el) => el.classList.toggle("selected", el.dataset.id === selected));
+        root.querySelectorAll(".match-item").forEach((el) => {
+          el.classList.toggle("selected", el.dataset.id === selected);
+        });
       });
       scene.addEventListener("dragstart", (event) => event.dataTransfer.setData("text/plain", item.id));
       scenes.append(scene);
@@ -166,19 +175,58 @@ function setupMatch() {
       targets.append(target);
     });
     feedback.textContent = "";
+    drawConnections();
   }
 
   function check(id, target) {
     const item = matches.find((match) => match.id === id);
     const ok = item.answer === target.dataset.answer;
-    target.classList.toggle("correct", ok);
-    target.classList.toggle("wrong", !ok);
-    feedback.textContent = ok ? `答對了：${item.scene} 需要注意${item.answer}。` : "再想想：觀察情境裡的關鍵線索。";
+    if (ok) {
+      connections.set(item.id, item.answer);
+      feedback.textContent = connections.size === matches.length
+        ? "全部連對了！你已經能從情境線索判斷主要災害。"
+        : `連對了：${item.scene} 需要注意${item.answer}。`;
+      drawConnections();
+    } else {
+      target.classList.add("wrong");
+      feedback.textContent = "再想想：觀察情境裡的關鍵線索，再重新連一次。";
+      window.setTimeout(() => target.classList.remove("wrong"), 700);
+    }
     selected = null;
     root.querySelectorAll(".match-item").forEach((el) => el.classList.remove("selected"));
   }
 
+  function drawConnections() {
+    const svg = root.querySelector(".match-lines");
+    if (!svg) return;
+    const box = root.getBoundingClientRect();
+    svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
+    svg.innerHTML = "";
+    root.querySelectorAll(".match-item, .drop-target").forEach((el) => {
+      el.classList.remove("connected");
+    });
+    connections.forEach((answer, id) => {
+      const scene = root.querySelector(`.match-item[data-id="${id}"]`);
+      const target = root.querySelector(`.drop-target[data-answer="${answer}"]`);
+      if (!scene || !target) return;
+      scene.classList.add("connected");
+      target.classList.add("connected");
+      const sceneBox = scene.getBoundingClientRect();
+      const targetBox = target.getBoundingClientRect();
+      const x1 = sceneBox.right - box.left;
+      const y1 = sceneBox.top + sceneBox.height / 2 - box.top;
+      const x2 = targetBox.left - box.left;
+      const y2 = targetBox.top + targetBox.height / 2 - box.top;
+      const mid = Math.max(36, (x2 - x1) / 2);
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", `M ${x1} ${y1} C ${x1 + mid} ${y1}, ${x2 - mid} ${y2}, ${x2} ${y2}`);
+      path.setAttribute("class", "match-line");
+      svg.append(path);
+    });
+  }
+
   document.querySelector("[data-reset-match]").addEventListener("click", render);
+  window.addEventListener("resize", drawConnections);
   render();
 }
 

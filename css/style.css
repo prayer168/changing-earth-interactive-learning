@@ -208,13 +208,18 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 }
 .match-area { margin-top: 1rem; }
 .match-game {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 5rem;
+  align-items: stretch;
+  margin: 1rem 0;
 }
 .match-column {
   display: grid;
   gap: 0.55rem;
+  position: relative;
+  z-index: 1;
 }
 .match-item, .drop-target {
   border: 2px solid var(--line);
@@ -224,8 +229,25 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
   min-height: 58px;
 }
 .match-item.selected { border-color: var(--sun); background: #fff6dd; }
+.match-item.connected, .drop-target.connected,
 .drop-target.correct { border-color: var(--accent); background: #eef8f4; }
 .drop-target.wrong { border-color: var(--danger); background: #fff0ef; }
+.match-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.match-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 10 8;
+  animation: flow 2.4s linear infinite;
+}
 .sim-controls {
   display: flex;
   gap: 0.75rem;

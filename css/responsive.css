@@ -14,9 +14,7 @@
   .mission-grid, .concepts, .app-grid {
     grid-template-columns: 1fr;
   }
-  .match-game {
-    grid-template-columns: 1fr;
-  }
+  .match-game { gap: 2rem; }
   .tabs {
     max-width: 100%;
   }
@@ -33,6 +31,11 @@
   .sim-controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .match-game { gap: 1rem; }
+  .match-item, .drop-target {
+    min-height: 72px;
+    padding: 0.6rem;
   }
   .progress-wrap {
     grid-template-columns: 1fr;
