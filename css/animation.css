@@ -1,6 +1,27 @@
 @keyframes seismic {
-  0% { transform: translate(-50%, 50%) scale(0.3); opacity: 0.85; }
-  100% { transform: translate(-50%, 50%) scale(13); opacity: 0; }
+  0% { transform: scale(0.15); opacity: 0.85; }
+  100% { transform: scale(10); opacity: 0; }
+}
+
+@keyframes leftPlatePush {
+  0%, 35% { transform: translateX(0); }
+  55%, 100% { transform: translateX(18px); }
+}
+
+@keyframes rightPlatePush {
+  0%, 35% { transform: translateX(0); }
+  55%, 100% { transform: translateX(-18px); }
+}
+
+@keyframes faultSlip {
+  0%, 45% { transform: translate(0, 0) rotate(0); }
+  58%, 100% { transform: translate(10px, -12px) rotate(1deg); }
+}
+
+@keyframes stressBuild {
+  0% { opacity: 0.18; }
+  45% { opacity: 0.72; }
+  58%, 100% { opacity: 0.22; }
 }
 
 .river {

@@ -1,7 +1,7 @@
 const processText = {
-  weathering: "風化：岩石在原地慢慢裂開，變成較小碎塊。",
-  erosion: "侵蝕：水流把坡面或河岸材料帶走，地形被切割。",
-  deposition: "堆積：水流變慢，泥沙留下來，形成沙洲或平坦地。"
+  weathering: "風化：岩石在原地受到陽光、雨水與植物根影響而裂開，位置沒有先被搬走。",
+  erosion: "侵蝕與搬運：水流速度變快時切割坡面，並把泥沙沿河道帶往下游。",
+  deposition: "堆積：水流到低平處速度變慢，搬不動的泥沙就留下來，形成沙洲或平坦地。"
 };
 
 const matches = [
@@ -20,19 +20,28 @@ function setupProcess() {
   const hill = document.querySelector("#hillShape");
   const sediment = document.querySelector("#sediment");
   const feedback = document.querySelector("#processFeedback");
+  const layers = [...document.querySelectorAll(".process-layer")];
+
+  function showLayer(name) {
+    layers.forEach((layer) => {
+      const visible = layer.dataset.layer === "base" || layer.dataset.layer === name;
+      layer.classList.toggle("hidden", !visible);
+    });
+  }
 
   document.querySelectorAll("[data-process]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-process]").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
       sediment.innerHTML = "";
+      showLayer(button.dataset.process);
       if (button.dataset.process === "weathering") {
-        hill.setAttribute("d", "M0 205 C94 174 132 100 214 132 C250 112 300 148 332 150 C390 152 420 188 540 176 L540 260 L0 260Z");
-        addPebbles(sediment, 7, "#6f7257");
+        hill.setAttribute("d", "M0 205 C96 174 132 100 214 132 C250 112 300 148 332 150 C390 152 420 188 540 176 L540 260 L0 260Z");
+        addPebbles(sediment, 7, "#6f7257", 168, 168);
       }
       if (button.dataset.process === "erosion") {
         hill.setAttribute("d", "M0 205 C105 168 150 92 236 122 C292 140 304 202 338 214 C392 236 444 188 540 176 L540 260 L0 260Z");
-        addPebbles(sediment, 12, "#9a714f");
+        addPebbles(sediment, 12, "#9a714f", 274, 168);
       }
       if (button.dataset.process === "deposition") {
         hill.setAttribute("d", "M0 205 C105 168 152 92 242 122 C318 146 354 196 540 176 L540 260 L0 260Z");
@@ -46,15 +55,18 @@ function setupProcess() {
     document.querySelectorAll("[data-process]").forEach((item) => item.classList.remove("active"));
     hill.setAttribute("d", "M0 205 C105 168 152 92 242 122 C318 146 354 196 540 176 L540 260 L0 260Z");
     sediment.innerHTML = "";
+    showLayer("");
     feedback.textContent = "請選擇一種作用。";
   });
+
+  showLayer("");
 }
 
-function addPebbles(group, count, color) {
+function addPebbles(group, count, color, startX, startY) {
   for (let i = 0; i < count; i += 1) {
     const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    c.setAttribute("cx", String(170 + i * 22));
-    c.setAttribute("cy", String(180 + (i % 3) * 17));
+    c.setAttribute("cx", String(startX + i * 18));
+    c.setAttribute("cy", String(startY + (i % 3) * 16));
     c.setAttribute("r", String(5 + (i % 2) * 3));
     c.setAttribute("fill", color);
     group.append(c);

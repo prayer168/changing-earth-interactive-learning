@@ -1,9 +1,9 @@
 @media (max-width: 880px) {
-  .hero-grid, .lab-layout {
+  .tab-intro, .lab-layout {
     grid-template-columns: 1fr;
   }
-  .hero {
-    min-height: auto;
+  .site-header {
+    position: static;
   }
   h1 {
     max-width: 12ch;

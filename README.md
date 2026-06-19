@@ -8,7 +8,7 @@
 - 科目：自然科學
 - 學習時間：40 分鐘
 - 教材模式：引導模式
-- 目前版本：v1.0.0
+- 目前版本：v1.0.1
 - GitHub Pages：https://prayer168.github.io/changing-earth-interactive-learning/
 
 ## 學習目標
@@ -21,7 +21,7 @@
 ## 教材特色
 
 - 七個頁籤式學習段落，適合電腦、平板與手機。
-- SVG 地景圖與 CSS/JavaScript 板塊動畫。
+- SVG 地景圖、地表作用圖層與板塊推擠步驟動畫。
 - 地表作用切換觀察、災害風險拖曳配對。
 - 10 題素養導向闖關題，題庫獨立存放於 `data/quiz.json`。
 - 使用 `localStorage` 記錄學習進度。
