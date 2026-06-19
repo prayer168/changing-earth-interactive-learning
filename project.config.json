@@ -1,0 +1,17 @@
+{
+  "title": "變動的大地",
+  "projectName": "changing-earth-interactive-learning",
+  "repositoryName": "changing-earth-interactive-learning",
+  "level": "國小",
+  "grade": "五年級",
+  "subject": "自然科學",
+  "duration": "40分鐘",
+  "mode": "引導模式",
+  "style": "清爽、自然、教學寫實",
+  "topics": ["我們的大地", "地表的變化", "大地的災害"],
+  "audio": false,
+  "progressTracking": true,
+  "teacherGuide": true,
+  "version": "0.1.0",
+  "githubPages": ""
+}
