@@ -39,6 +39,32 @@
   to { stroke-dashoffset: -92; }
 }
 
+@keyframes bankPulse {
+  0%, 100% { opacity: 0.45; stroke-width: 6; }
+  50% { opacity: 1; stroke-width: 9; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); opacity: 0.8; }
+  50% { transform: translate(12px, -3px); opacity: 1; }
+}
+
+@keyframes settle {
+  0%, 100% { transform: scaleX(0.96); }
+  50% { transform: scaleX(1.04); }
+}
+
+@keyframes rockDrop {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(14px, 18px); }
+}
+
+@keyframes rainDrop {
+  from { transform: translateY(-12px); opacity: 0.15; }
+  40% { opacity: 1; }
+  to { transform: translateY(24px); opacity: 0.2; }
+}
+
 .fault-line {
   animation: tremble 4s ease-in-out infinite;
   transform-origin: center;

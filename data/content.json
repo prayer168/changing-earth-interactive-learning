@@ -28,36 +28,42 @@
   "applications": [
     {
       "title": "河川彎道外側",
+      "visual": "riverBend",
       "principle": "侵蝕",
       "text": "水流在彎道外側速度較快，岸邊較容易被沖刷。",
       "question": "如果你要觀察河岸安全，會看水流速度還是只看河水顏色？"
     },
     {
       "title": "海邊沙洲",
+      "visual": "sandbar",
       "principle": "堆積",
       "text": "海浪和沿岸流會搬運沙粒，速度變慢時形成沙洲或沙灘。",
       "question": "為什麼同一片海岸每年形狀可能不太一樣？"
     },
     {
       "title": "山路落石",
+      "visual": "rockfall",
       "principle": "風化與重力",
       "text": "岩石裂縫進水、溫度變化或植物根擴張，都可能讓岩塊鬆動。",
       "question": "看到落石警告牌時，通過山路應該加快停留還是減少停留？"
     },
     {
       "title": "豪雨後溪水混濁",
+      "visual": "muddyStream",
       "principle": "侵蝕與搬運",
       "text": "大雨讓水流變強，泥沙被帶進溪流，所以溪水可能變混濁。",
       "question": "混濁溪水代表上游可能發生哪些變化？"
     },
     {
       "title": "地震避難",
+      "visual": "earthquakeSafety",
       "principle": "板塊錯動",
       "text": "地震時先保護頭頸，趴下、掩護、穩住，搖晃停止後再依指示疏散。",
       "question": "為什麼地震當下不適合急著衝向樓梯？"
     },
     {
       "title": "坡地社區",
+      "visual": "debrisFlow",
       "principle": "土石流風險",
       "text": "坡度大、土石鬆散、雨量強時，土石流風險會升高。",
       "question": "颱風豪雨前，坡地居民可以先確認哪些資訊？"

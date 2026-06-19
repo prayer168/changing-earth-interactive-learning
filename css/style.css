@@ -115,7 +115,7 @@ main { background: var(--paper); }
 .panel {
   display: none;
   min-height: calc(100vh - 150px);
-  padding: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(2rem, 5vw, 4.5rem) 7rem;
 }
 .panel.active { display: block; }
 .mission-grid, .concepts, .app-grid {
@@ -303,6 +303,76 @@ article, .concept-card, .app-card, .resource-item, .quiz-box, .toolbox, .match-a
 }
 .resource-list { display: grid; gap: 0.75rem; }
 .resource-item a { color: var(--accent-dark); font-weight: 800; }
+.app-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.app-visual {
+  width: 100%;
+  aspect-ratio: 12 / 5;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eef7fb;
+}
+.water-flow,
+.wave-line,
+.mud-flow,
+.debris-channel {
+  stroke-dasharray: 22 16;
+  animation: flow 3.2s linear infinite;
+}
+.fast-bank {
+  animation: bankPulse 1.8s ease-in-out infinite;
+}
+.sand-dot,
+.debris,
+.fall-rock {
+  fill: #8b6b45;
+}
+.sand-dot.a,
+.debris.one {
+  animation: drift 2.8s ease-in-out infinite;
+}
+.sand-dot.b,
+.debris.two {
+  animation: drift 2.8s ease-in-out 0.35s infinite;
+}
+.sand-dot.c,
+.debris.three {
+  animation: drift 2.8s ease-in-out 0.7s infinite;
+}
+.sand-body {
+  animation: settle 3.4s ease-in-out infinite;
+  transform-origin: center;
+}
+.fall-rock.one {
+  animation: rockDrop 2.5s ease-in-out infinite;
+}
+.fall-rock.two {
+  animation: rockDrop 2.5s ease-in-out 0.35s infinite;
+}
+.rain {
+  stroke: #2f81bd;
+  stroke-width: 5;
+  stroke-linecap: round;
+  animation: rainDrop 1.2s linear infinite;
+}
+.rain-b { animation-delay: 0.25s; }
+.rain-c { animation-delay: 0.5s; }
+.desk {
+  fill: #8b6b45;
+}
+.shake-mark {
+  fill: none;
+  stroke: #b94b43;
+  stroke-width: 5;
+  animation: tremble 1.2s ease-in-out infinite;
+}
+.shake-mark.right {
+  animation-delay: 0.2s;
+}
 .quiz-options { display: grid; gap: 0.6rem; margin: 1rem 0; }
 .quiz-options button { text-align: left; background: #f4f7f5; color: var(--ink); border: 1px solid var(--line); }
 .quiz-options button.correct { background: #e7f6ef; border-color: var(--accent); }
